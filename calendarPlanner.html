@@ -1,0 +1,75 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 04-02-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Calendar Planner" icon-name="utility:calendar">
+      <div class="slds-p-around_medium">
+        <div class="slds-m-top_medium">
+          <lightning-button
+            variant="neutral"
+            label="Previous"
+            data-direction="prev"
+            onclick={handleMonthChange}
+          ></lightning-button>
+          <span class="slds-m-horizontal_small">{monthYearLabel}</span>
+          <lightning-button
+            variant="neutral"
+            label="Next"
+            data-direction="next"
+            onclick={handleMonthChange}
+          ></lightning-button>
+        </div>
+        <div class="slds-m-top_medium">
+          <table class="slds-table slds-table_bordered">
+            <thead>
+              <tr>
+                <template for:each={dayHeaders} for:item="header">
+                  <th key={header} class="slds-text-align_center">{header}</th>
+                </template>
+              </tr>
+            </thead>
+            <tbody>
+              <template for:each={weeks} for:item="week">
+                <tr key={week.weekId}>
+                  <template for:each={week.days} for:item="day">
+                    <td key={day.date} class="slds-text-align_center">
+                      <template if:true={day.day}>
+                        <div>{day.day}</div>
+                        <lightning-input
+                          type="time"
+                          name="start"
+                          label="Start"
+                          value={day.start}
+                          data-date={day.date}
+                          onchange={handleTimeChange}
+                        ></lightning-input>
+                        <lightning-input
+                          type="time"
+                          name="end"
+                          label="End"
+                          value={day.end}
+                          data-date={day.date}
+                          onchange={handleTimeChange}
+                        ></lightning-input>
+                      </template>
+                    </td>
+                  </template>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+        <div class="slds-m-top_medium">
+          <lightning-button
+            variant="neutral"
+            label="Reset Month"
+            onclick={handleResetMonth}
+          ></lightning-button>
+        </div>
+      </div>
+    </lightning-card>
+  </template>

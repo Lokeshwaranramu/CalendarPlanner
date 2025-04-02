@@ -1,0 +1,24 @@
+:host {
+    --slds-c-card-color-background: #f9fafb;
+  }
+  
+  .slds-grid .slds-col {
+    border: 1px solid #e0e0e0;
+  }
+  
+  lightning-input {
+    margin-top: 0.5rem;
+  }
+  
+  lightning-button {
+    transition: transform 0.2s;
+  }
+  
+  lightning-button:hover {
+    transform: scale(1.05);
+  }
+  
+  td {
+    vertical-align: top;
+    min-width: 120px;
+  }
